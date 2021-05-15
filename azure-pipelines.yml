@@ -44,3 +44,13 @@ steps:
     downloadType: 'single'
     artifactName: 'drop'
     downloadPath: '$(System.ArtifactsDirectory)'
+
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(56f5b558-be9c-4fc2-869f-533d9dae049f)'
+    appType: 'webApp'
+    WebAppName: 'WebAppdemodave'
+    packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
+
