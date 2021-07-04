@@ -17,9 +17,9 @@
             <br />
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="OK" />
+            <br />
+            <br />
             <asp:Button ID="Button2" runat="server" Text="Button" />
-            <br />
-            <br />
             <br />
             <asp:Label ID="Label1" runat="server"></asp:Label>
             <br />
