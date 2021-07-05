@@ -20,6 +20,7 @@
             <br />
             <br />
             <asp:Button ID="Button2" runat="server" Text="Button" />
+            <asp:Button ID="Button3" runat="server" Text="Button" />
             <br />
             <asp:Label ID="Label1" runat="server"></asp:Label>
             <br />
