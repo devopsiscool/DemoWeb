@@ -43,24 +43,28 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-- stage: Deploy
+- stage: Deplo
   jobs:
-  - job: Deploy
+  - deployment: Deplo
+    strategy:
+     runOnce:
+       deploy:
 
-    pool: 'OURPOOL'
 
-    steps:
-    - task: DownloadBuildArtifacts@0
-      inputs:
-        buildType: 'current'
-        downloadType: 'single'
-        artifactName: 'drop'
-        downloadPath: '$(System.ArtifactsDirectory)'
+        pool: 'OURPOOL'
 
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'MyServiceConnectionforwebapp'
-        appType: 'webApp'
-        WebAppName: 'WebAppdemodave'
-        packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
+        steps:
+        - task: DownloadBuildArtifacts@0
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'drop'
+            downloadPath: '$(System.ArtifactsDirectory)'
+
+        - task: AzureRmWebAppDeployment@4
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'MyServiceConnectionforwebapp'
+            appType: 'webApp'
+            WebAppName: 'WebAppdemodave'
+            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
